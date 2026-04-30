@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDS Control Center</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Socket.IO -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Alerts -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>⚠️ ALERT FEED</h2>
+                <div class="status-indicator">
+                    <span class="dot pulse"></span> LIVE
+                </div>
+            </div>
+            <div class="alerts-container" id="alerts-container">
+                <!-- Alerts will be injected here -->
+                <div class="no-alerts">System Normal. Monitoring traffic...</div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h1>IDS <span class="accent">Control Center</span></h1>
+                <p>Anomaly-Based Intrusion Detection System</p>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- Stats Cards -->
+                <div class="card stat-card">
+                    <h3>Current PPS</h3>
+                    <div class="value" id="current-pps">0</div>
+                </div>
+                <div class="card stat-card">
+                    <h3>Avg Packet Size</h3>
+                    <div class="value" id="current-size">0 B</div>
+                </div>
+                <div class="card stat-card">
+                    <h3>Anomalies Detected</h3>
+                    <div class="value alert-text" id="anomaly-count">0</div>
+                </div>
+
+                <!-- Main Chart -->
+                <div class="card chart-card">
+                    <h3>Live Network Traffic (Packets/sec)</h3>
+                    <div class="chart-container">
+                        <canvas id="trafficChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
