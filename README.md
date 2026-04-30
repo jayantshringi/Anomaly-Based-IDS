@@ -41,7 +41,7 @@ IDS_Project/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/Anomaly-Based-IDS.git
+   git clone https://github.com/jayantshringi/Anomaly-Based-IDS.git
    cd Anomaly-Based-IDS
    ```
 
