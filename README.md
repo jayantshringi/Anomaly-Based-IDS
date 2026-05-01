@@ -19,8 +19,10 @@ A real-time, Machine Learning-powered Intrusion Detection System (IDS) built wit
 ## 📂 Project Structure
 
 ```text
-IDS_Project/
-├── dashboard/               # Flask Web UI (HTML/CSS/JS)
+Anomaly-Based-IDS/
+├── .github/                 # GitHub Actions workflows
+├── dashboard/               # Flask Web Server
+│   └── app.py               # Flask application & Socket.IO logic
 ├── data/                    # Training datasets (.csv)
 ├── logs/                    # Security alert logs
 ├── models/                  # Saved ML models (.pkl)
@@ -30,6 +32,9 @@ IDS_Project/
 │   ├── train.py             # ML model training logic
 │   ├── detect.py            # Real-time anomaly prediction
 │   └── alert.py             # Alert logging and system
+├── index.html               # Dashboard Frontend HTML
+├── main.js                  # Dashboard Frontend JavaScript
+├── styles.css               # Dashboard Frontend CSS
 ├── main.py                  # Orchestrator script
 ├── requirements.txt         # Python dependencies
 └── simulate_attack.py       # Safe testing script
