@@ -1,4 +1,7 @@
-const socket = io();
+const BACKEND_URL = window.location.hostname.includes('github.io') 
+    ? 'http://127.0.0.1:5000' 
+    : '';
+const socket = io(BACKEND_URL);
 
 // UI Elements
 const currentPpsEl = document.getElementById('current-pps');
@@ -67,6 +70,14 @@ const trafficChart = new Chart(ctx, chartConfig);
 // Socket Listeners
 socket.on('connect', () => {
     console.log('Connected to IDS server');
+    const noAlerts = document.querySelector('.no-alerts');
+    if (noAlerts) noAlerts.textContent = "System Normal. Monitoring traffic...";
+});
+
+socket.on('connect_error', (error) => {
+    console.error('Connection Error:', error);
+    const noAlerts = document.querySelector('.no-alerts');
+    if (noAlerts) noAlerts.innerHTML = "⚠️ Backend not connected.<br>Run <code>python main.py --mode dashboard</code> locally.";
 });
 
 socket.on('traffic_update', (data) => {
